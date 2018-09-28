@@ -19,9 +19,26 @@ class FoodTrackerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    // MARK: Meal Class Tests
+    func testMealInitialisationSucceeds() {
+        let zeroRatingMeal = Meal.init(name: "Zero", photo: nil, rating: 0)
+        XCTAssertNotNil(zeroRatingMeal)
+        
+        let positiveRatingMeal = Meal.init(name: "Five", photo: nil, rating: 5)
+        XCTAssertNotNil(positiveRatingMeal)
+        
+        
+    }
+    
+    func testMealInitialisationFails() {
+        let negativeRatingMeal = Meal.init(name: "Negative", photo: nil, rating: -1)
+        XCTAssertNil(negativeRatingMeal)
+        
+        let emptyStringMeal = Meal.init(name: "", photo: nil, rating: 3)
+        XCTAssertNil(emptyStringMeal)
+        
+        let largeRatingMeal = Meal.init(name: "Large", photo: nil, rating: 6)
+        XCTAssertNil(largeRatingMeal)
     }
 
     func testPerformanceExample() {
