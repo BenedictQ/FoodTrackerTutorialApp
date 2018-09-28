@@ -1,0 +1,52 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red182\green165\blue141;\red30\green30\blue34;\red230\green223\blue207;
+\red200\green189\blue105;\red102\green198\blue213;}
+{\*\expandedcolortbl;;\cssrgb\c76471\c70588\c61961;\cssrgb\c15686\c15686\c18039;\cssrgb\c92157\c89804\c84706;
+\cssrgb\c82353\c78039\c48627;\cssrgb\c46275\c81569\c86667;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww33100\viewh20700\viewkind0
+\deftab720
+\pard\pardeftab720\sl380\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+# iOS CircleCI 2.0 configuration file\cf4 \
+\cf2 #\cf4 \
+\cf2 # Check https://circleci.com/docs/2.0/ios-migrating-from-1-2/ for more details\cf4 \
+\cf2 #\cf4 \
+\pard\pardeftab720\sl380\partightenfactor0
+\cf5 version\cf4 : 2\
+\cf5 jobs\cf4 :\
+  \cf5 build\cf4 :\
+\
+    \cf2 # Specify the Xcode version to use\cf4 \
+    \cf5 macos\cf4 :\
+      \cf5 xcode\cf4 : \cf6 \'9310.0\'94\cf4 \
+\
+    \cf5 steps\cf4 :\
+      - checkout\
+\
+      \cf2 # Install CocoaPods\cf4 \
+      - \cf5 run\cf4 :\
+          \cf5 name\cf4 : Install CocoaPods\
+          \cf5 command\cf4 : pod install\
+\
+      \cf2 # Build the app and run tests\cf4 \
+      - \cf5 run\cf4 :\
+          \cf5 name\cf4 : Build and run tests\
+          \cf5 command\cf4 : fastlane scan\
+          \cf5 environment\cf4 :\
+            \cf5 SCAN_DEVICE\cf4 : iPhone 7\
+            \cf5 SCAN_SCHEME\cf4 : WebTests\
+\
+      \cf2 # Collect XML test results data to show in the UI,\cf4 \
+      \cf2 # and save the same XML files under test-results folder\cf4 \
+      \cf2 # in the Artifacts tab\cf4 \
+      - \cf5 store_test_results\cf4 :\
+          \cf5 path\cf4 : test_output/report.xml\
+      - \cf5 store_artifacts\cf4 :\
+          \cf5 path\cf4 : /tmp/test-results\
+          \cf5 destination\cf4 : scan-test-results\
+      - \cf5 store_artifacts\cf4 :\
+          \cf5 path\cf4 : ~/Library/Logs/scan\
+          \cf5 destination\cf4 : scan-logs\
+}
