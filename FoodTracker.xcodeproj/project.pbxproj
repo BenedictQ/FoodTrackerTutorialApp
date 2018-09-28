@@ -107,8 +107,8 @@
 			children = (
 				9D0BBFBA215BD2E300B80814 /* AppDelegate.swift */,
 				9D0BBFBC215BD2E300B80814 /* MealViewController.swift */,
-				9D0BBFBE215BD2E300B80814 /* Main.storyboard */,
 				9DFA185B215E1C3000515584 /* MealTableViewController.swift */,
+				9D0BBFBE215BD2E300B80814 /* Main.storyboard */,
 				9D0BBFE8215CE6C900B80814 /* RatingControl.swift */,
 				9D0BBFEA215D157300B80814 /* Meal.swift */,
 				9D0BBFEC215D21B300B80814 /* MealTableViewCell.swift */,
